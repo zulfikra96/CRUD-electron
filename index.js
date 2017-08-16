@@ -8,4 +8,9 @@ app.on('ready', function(){
         height:768
     })
     win.loadURL(`file://${__dirname}/index.html`)
+
+    app.on('quit',function(event){
+        event.preventDefault()
+        alert("hello world")
+    })
 })

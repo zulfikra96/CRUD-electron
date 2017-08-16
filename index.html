@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!--script-->
+    <script>
+        require('./config/connect')
+        require('./main')
+    </script>
 </head>
 <body>
     <div class="container">
@@ -17,22 +22,38 @@
                 <button class="button-add" id="tambah">Tambah</button>    
             </div>
             <div class="table-content">
-                 <table>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Alamat</th>                        
-                        <th>Action</th>                        
-                    </tr>
+                 <table border="1" id="table">
+                    <thead>
+                        <tr>
+                            <th class="no">No</th>
+                            <th class="name">Nama</th>
+                            <th class="address">Alamat</th>                        
+                            <th>Action</th>                        
+                        </tr>
+                    </thead>
+                    <tbody id="data-table">
+                    </tbody>
+                    <!--script-->
+                    <script>
+                        const connect = require('./config/connect')
+                        const { db } = connect
+                        db.serialize(function(){
+                            let data = ''
+                            let table = document.getElementById("data-table") 
+                            let button = document.createElement("button")
+                             db.all("SELECT * FROM users",function(err, rows){
+                                rows.forEach(function(row){
+                                    table.innerHTML += `<tr><td>${row.id}</td><td>${row.username}</td><td>${row.alamat}</td><td class="btn-table-field"><button class="btn-table update">Ubah</button><button class="btn-table hapus">Hapus</button></td></tr>`
+                                })
+                             })
+                            
+                        })
+                    </script>
                 </table>
             </div>
         </div>
     </div>
-    <!--script-->
-    <script>
-        require('./main')
-        require('./config/connect')
-    </script>
+    
     
 </body>
 </html>

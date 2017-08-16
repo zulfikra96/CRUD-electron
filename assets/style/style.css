@@ -24,8 +24,37 @@
 .table-content{
     margin-top:20px;
 }
-.table-content table{
-    width:100%;
-    border: 1px solid black;
+.name{
+    width:25%;
+}
+.address{
+    width:25%;
 }
 
+.no{
+    width: 50px;
+    text-align: center;
+}
+.data-table tr td{
+    text-align: center;
+}
+.update{
+    background-color: #1abc9c;  
+}
+.hapus{
+    background-color: #e74c3c;      
+}
+.btn-table{
+    margin-left: 10px;
+    padding-left:22px;
+    padding-right:22px;
+    padding-top:18px;
+    padding-bottom:18px;
+    border:none;
+    border-radius:6px;
+    color:#fff;
+}
+
+.btn-table-field{
+    padding:10px;
+}
